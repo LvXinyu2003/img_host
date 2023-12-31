@@ -10,6 +10,10 @@
 #include <QString>
 #include <QTextStream>
 
+#include <QPoint>
+#include <QPen>
+#include <QPainter>
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class home_page;
@@ -33,11 +37,19 @@ private slots:
 
     void on_pushButton_clear_clicked();
 
+    void on_pushButton_clear_img_clicked();
+
+    void on_pushButton_img_trans_clicked(bool checked);
+
 private:
     Ui::home_page *ui;
 
     //串口
     QSerialPort *serialPort;
     void Read_Data();
+    void Read_Img();
+
+    //Paint
+    void paintEvent(QPaintEvent *event);
 };
 #endif // HOME_PAGE_H
