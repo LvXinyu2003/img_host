@@ -31,10 +31,13 @@ private slots:
 
     void on_pushButton_network_clicked();
 
+    void on_pushButton_clear_clicked();
+
 private:
     Ui::home_page *ui;
 
     //串口
     QSerialPort *serialPort;
+    void Read_Data();
 };
 #endif // HOME_PAGE_H
