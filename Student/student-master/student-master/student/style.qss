@@ -1,0 +1,25 @@
+/*设置整个Widget样式*/
+QWidget{
+    background-color: rgb(255,255,255);
+}
+/*设置界面中所有QPushButton样式*/
+QPushButton{
+    font: 25 14pt "微软雅黑 Light";
+    color: rgb(255,255,255);
+    background-color: rgb(80,92,102);
+    border: none;
+    border-radius:8px;
+}
+/*hover样式*/
+QPushButton:hover{
+    background-color: rgb(95,107,117);
+}
+/*pressed样式*/
+QPushButton:pressed{
+    background-color: rgb(54,54,54);
+}
+/*设置QcomboBox的子控件下拉框hover时的样式*/
+QComboBox QAbstractItemView::item:hover{
+    color: rgb(20,20,20);
+    background-color: rgb(255,209,71);
+}
