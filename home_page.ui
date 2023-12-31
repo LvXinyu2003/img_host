@@ -623,7 +623,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_6">
         <item>
-         <widget class="QCheckBox" name="checkBox">
+         <widget class="QCheckBox" name="checkBox_hex_display">
           <property name="text">
            <string>HEX显示</string>
           </property>

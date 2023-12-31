@@ -97,10 +97,21 @@ void home_page::Read_Data()
             //out << time_str;
             //添加时间戳
             str += time_str;
+            str += " ";
         }
 
-        //添加新内容
-        str+=tr(buf);
+        //hex显示
+        if(ui->checkBox_hex_display->isChecked())
+        {
+            str+=buf.toHex();
+        }
+        //文本显示
+        else
+        {
+            //添加新内容
+            str+=tr(buf);
+        }
+
         //重新显示
         ui->textBrowser_receive->clear();
         ui->textBrowser_receive->append(str);
