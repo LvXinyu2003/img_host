@@ -13,6 +13,7 @@
 #include <QPoint>
 #include <QPen>
 #include <QPainter>
+#include <QVector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

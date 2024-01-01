@@ -88,6 +88,9 @@ void home_page::Read_Data()
 {
     QByteArray buf;
     buf = serialPort->readAll();
+
+    //QTextStream out(stdout);
+    //out << buf;
     if(!buf.isEmpty())
     {
 
@@ -127,23 +130,75 @@ void home_page::Read_Data()
     buf.clear();
 }
 
+int cnt = 0;
+QTextStream out(stdout);
+QVector<int> img_vec(img_size);
+int length_sum = 0;
 //接收图像
 void home_page::Read_Img()
 {
-    int camera_image[img_height][img_width];
+
     QByteArray buf;
     QString str;
-    //buf = serialPort->read(img_size);
 
-    buf = serialPort->read(1);
+    buf = serialPort->readAll();
     if(!buf.isEmpty())
     {
-        str = buf.toHex();
-        QTextStream out(stdout);
-        out << str;
-        out<<"\r\n";
+
+        str += buf.toHex();
+        //out<<str<<"\r\n";
+        //帧头
+        if(str[0]=='6' && str[1] == '6' && str[2] == 'f' && str[3] == 'f' && str[4] == '0' && str[5] == '1' && str[6] == '0' && str[7] == '1')
+        {
+            out<<"length_sum:"<<length_sum<<"\r\n";
+            length_sum=0;
+            length_sum+=str.length();
+            // out<<"header,length:"<<str.length();
+            // out<<str<<"\r\n";
+            str.remove(0,7);
+
+            cnt = 0;
+            for(int i = 0;i<=str.length()-8-2;i+=2)
+            {
+                QString tem1 = str[i];
+                QString tem2 = str[i+1];
+                bool ok;
+                int tem_int1 = tem1.toInt(&ok,16);
+                int tem_int2 = tem2.toInt(&ok,16);
+                int value = tem_int1*16 + tem_int2;
+
+                img_vec[cnt] = value;
+                cnt++;
+            }
+
+            // for (auto num=img_vec.begin(); num!=img_vec.end()-1; num++)
+            // {
+            //     out<< *num;
+            // }
+            // out<<"\r\n";
+        }
+        //非帧头
+        else
+        {
+            length_sum+=str.length();
+            // out<<"length:"<<str.length();
+            // out<<str<<"\r\n";
+            for(int i = 0;i<=str.length()-2;i+=2)
+            {
+                QString tem1 = str[i];
+                QString tem2 = str[i+1];
+                bool ok;
+                int tem_int1 = tem1.toInt(&ok,16);
+                int tem_int2 = tem2.toInt(&ok,16);
+                int value = tem_int1*16 + tem_int2;
+
+                img_vec[cnt] = value;
+                cnt++;
+            }
+        }
     }
     buf.clear();
+
 
 }
 

@@ -650,7 +650,7 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>130</x>
@@ -724,7 +724,7 @@
       <string>图像传输</string>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -744,7 +744,7 @@
       <item row="0" column="1">
        <widget class="QLineEdit" name="lineEdit_img_width">
         <property name="text">
-         <string>188</string>
+         <string>94</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -761,7 +761,7 @@
       <item row="1" column="1">
        <widget class="QLineEdit" name="lineEdit_img_height">
         <property name="text">
-         <string>120</string>
+         <string>60</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
